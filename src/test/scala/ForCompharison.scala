@@ -1,6 +1,9 @@
 import org.scalatest.FunSuite
 
+
 class ForCompharison extends FunSuite {
+
+  case class Book(name : String, pages : Int, price: Int)
 
   val books = List(Book("Scala Testing", 200, 20),
     Book("Quo Vadis", 700, 15),

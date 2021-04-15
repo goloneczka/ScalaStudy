@@ -2,6 +2,31 @@ import org.scalatest.FunSuite
 
 class PatternMatching extends FunSuite {
 
+  abstract class Vehicle {
+    def drive() : String
+  }
+
+  case class Bus(brand: String, seats: Int, length: Int) extends Vehicle {
+
+    def drive(): String = {
+      s"Bus $brand is driving people to work and home"
+    }
+  }
+
+  case class Tank(brand : String, seats : Int, height : Int) extends Vehicle{
+
+    def drive(): String = {
+      s"Tank $brand make Wrrrr !"
+    }
+  }
+
+  case class Car(brand : String, seats : Int, color : String) extends Vehicle{
+
+    def drive(): String = {
+      s"Car $brand is driving really fast"
+    }
+  }
+
 
   test("pattern one"){
 
