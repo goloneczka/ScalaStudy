@@ -57,4 +57,17 @@ class ForCompharison extends FunSuite {
     assert(duplicated.contains("added book with duplicated price") && duplicated.contains("Quo Vadis"))
 
   }
+
+  test("Comp five"){
+
+    val matchedFromLoop = (for (b <- books) yield b.pages match {
+      case 700 => "A lot of pages"
+      case 500 | 450 => "not too much and not too less"
+      case 200 => "A few pages"
+    }).toArray
+
+    assert(matchedFromLoop.contains("A lot of pages") ||
+      matchedFromLoop.contains("not too much and not too less") ||
+      matchedFromLoop.contains("A few pages"))
+  }
 }

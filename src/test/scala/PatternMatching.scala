@@ -26,17 +26,28 @@ class PatternMatching extends FunSuite {
     assert(isTrue(null) === false)
     assert(isTrue(6) === true)
     assert(isTrue(-124) === true)
-
-
   }
+
+  test("pattern twoB") {
+    def isOdd(x: Int): Boolean = x match {
+      case x if(x % 2 === 1)  => true
+      case _ => false
+    }
+
+    assert(isOdd(0) === false)
+    assert(isOdd(2112) === false)
+    assert(isOdd(1) === true)
+    assert(isOdd(127) === true)
+  }
+
 
 
   test("pattern two"){
 
     def matchVehicleToString(x: Vehicle): String = x match {
-      case Car(brand, seats, color) => s"car named $brand with $seats seats has buty $color color and is super fast"
-      case Bus(brand, seats, length) => s"Bus named $brand with $seats seats has $length meters length and drive you to home"
-      case Tank(brand, seats, height) => s"Tank named $brand with $seats seats has $height kg weight and attack his enemies"
+      case Car("Fiat 126p", seats, color) => s"car named Fiat 126p with $seats seats has buty $color color and is super fast"
+      case Bus(brand, 40, length) => s"Bus named $brand with 40 seats has $length meters length and drive you to home"
+      case Tank(brand, seats, 45000) => s"Tank named $brand with $seats seats has 45000 kg weight and attack his enemies"
     }
 
     assert(matchVehicleToString(Car("Fiat 126p", 5, "red")) ===
@@ -98,6 +109,7 @@ class PatternMatching extends FunSuite {
         assert(matchVehicleTypeToString(tank) ===
           "Tank Panther make Wrrrr !")
     }
+
 
 
 }
