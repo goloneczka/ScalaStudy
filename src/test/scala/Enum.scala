@@ -3,7 +3,7 @@ import scala.language.implicitConversions
 
 case class Enum() extends FunSuite{
 
-  test("one"){
+  test("basic view of enum"){
     object Planets extends Enumeration {
       type SolarSystem = Value
       val Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune = Value
@@ -14,7 +14,7 @@ case class Enum() extends FunSuite{
     assert(Planets.Earth.id === 2)
   }
 
-  test("two"){
+  test("IDS in enum"){
     object Movies extends Enumeration {
       type Movie = Value
 
@@ -31,7 +31,7 @@ case class Enum() extends FunSuite{
 
   }
 
-  test("three"){
+  test("extends value in enum"){
     object Movies extends Enumeration {
 
       val Musical = Movie( "movies with a lot of music", 1010)
@@ -55,7 +55,7 @@ case class Enum() extends FunSuite{
     assert(!isLowestSet(Movies.Drama))
   }
 
-  test("four"){
+  test("enum with pattern matching"){
     object Movies extends Enumeration {
       type Movie = Value
 

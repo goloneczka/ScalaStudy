@@ -1,7 +1,7 @@
 import org.scalatest.FunSuite
 
 
-class ForCompharison extends FunSuite {
+class ForComprehension extends FunSuite {
 
   case class Book(name : String, pages : Int, price: Int)
 
@@ -11,7 +11,7 @@ class ForCompharison extends FunSuite {
     Book("Harry Poter", 500, 40))
 
 
-  test("Comph one ") {
+  test("basic view of for comprehension") {
 
     val allBooksOnDiscount = for (book <- books)
       yield book.price * 0.8
@@ -21,7 +21,7 @@ class ForCompharison extends FunSuite {
     assert(allBooksOnDiscount.min == 12) // 15 * 0.8 = 12
   }
 
-  test("Comph two") {
+  test("additional filter") {
 
     val averageSizeBooks = for (book <- books if (book.pages >= 300 && book.pages <= 500))
       yield book.name
@@ -30,7 +30,7 @@ class ForCompharison extends FunSuite {
     assert(averageSizeBooks.contains("Clean Code") && averageSizeBooks.contains("Harry Poter") )
   }
 
-  test("Comph three") {
+  test("multi generators, usage without yield") {
     for (
       n <- 1 to 3;
       c <- 'a' to 'c'
@@ -45,7 +45,7 @@ class ForCompharison extends FunSuite {
 
   }
 
-  test("Comp four"){
+  test("multi generators and ifs"){
 
     val booksWithDuplicatedPrice = Book("added book with duplicated price", 333, 15) :: books
 
@@ -61,16 +61,4 @@ class ForCompharison extends FunSuite {
 
   }
 
-  test("Comp five"){
-
-    val matchedFromLoop = (for (b <- books) yield b.pages match {
-      case 700 => "A lot of pages"
-      case 500 | 450 => "not too much and not too less"
-      case 200 => "A few pages"
-    }).toArray
-
-    assert(matchedFromLoop.contains("A lot of pages") ||
-      matchedFromLoop.contains("not too much and not too less") ||
-      matchedFromLoop.contains("A few pages"))
-  }
 }
