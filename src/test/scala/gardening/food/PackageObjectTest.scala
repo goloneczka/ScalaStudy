@@ -1,4 +1,4 @@
-package gardening.food
+package gardening.food // zaimportowana jest tylko paczka, a nie konkretny obiekt
 
 import org.scalatest.FunSuite
 

@@ -1,6 +1,6 @@
 package gardening
 
-package object food {
+package object food extends HelloWorldPrinter with GreaterPrinter {
 	
 	type Weighted[T] = (Double, T)
 	
@@ -16,4 +16,8 @@ package object food {
 	class Fruit(calories: Int, weighted: Weighted[Food]) {
 		def showDensity(): Unit = println(s"Fruit's calories: $calories, weight: ${weighted._1}")
 	}
+	
+	override def printHelloWorld(): Unit = println("Hello World!")
+	
+	override def greet(name: String): Unit = println(s"Hello, $name!")
 }
