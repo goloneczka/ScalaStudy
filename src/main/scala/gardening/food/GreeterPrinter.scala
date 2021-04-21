@@ -1,5 +1,5 @@
 package gardening.food
 
-trait GreaterPrinter {
+trait GreeterPrinter {
 	def greet(name: String)
 }

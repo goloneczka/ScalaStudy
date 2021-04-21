@@ -1,6 +1,6 @@
 package gardening
 
-package object food extends HelloWorldPrinter with GreaterPrinter {
+package object food extends HelloWorldPrinter with GreeterPrinter {
 	
 	type Weighted[T] = (Double, T)
 	
