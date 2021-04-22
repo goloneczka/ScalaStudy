@@ -1,5 +1,5 @@
 package gardening.food
 
 trait HelloWorldPrinter {
-	def printHelloWorld()
+	def printHelloWorld(): Unit
 }
