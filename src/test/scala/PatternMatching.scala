@@ -39,6 +39,7 @@ class PatternMatching extends FunSuite {
 
     assert(matchNumberToString(1) === "one")
     assert(matchNumberToString(101) === "something else")
+
   }
 
   test("multiple choices") {
@@ -50,7 +51,7 @@ class PatternMatching extends FunSuite {
     assert(isTrue(0) === false)
     assert(isTrue(null) === false)
     assert(isTrue(6) === true)
-    assert(isTrue(-124) === true)
+    assert(isTrue("-124") === true)
   }
 
   test("if inside matching") {
@@ -96,14 +97,10 @@ class PatternMatching extends FunSuite {
     val bus: Vehicle = Bus("Solaris", 40, 30)
     val tank: Vehicle = Tank("Panther", 4, 45000)
 
-    def vehDrive (veh: Vehicle): String = {
-      veh.drive()
-    }
-
     def matchVehicleTypeToString(x: Vehicle): String = x match {
-      case c: Car => vehDrive(c)
-      case b: Bus => vehDrive(b)
-      case t: Tank => vehDrive(t)
+      case c: Car => c.drive()
+      case b: Bus => b.drive()
+      case t: Tank => t.drive()
     }
 
         assert(matchVehicleTypeToString(car) ===
@@ -129,7 +126,7 @@ class PatternMatching extends FunSuite {
       case 700 => "A lot of pages"
       case 500 | 450 => "not too much and not too less"
       case 200 => "A few pages"
-    }).toArray
+    })
 
     assert(matchedFromLoop.contains("A lot of pages") ||
       matchedFromLoop.contains("not too much and not too less") ||

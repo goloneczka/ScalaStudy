@@ -20,7 +20,7 @@ class Quiz extends FunSuite {
 //    assert(!matchedFromLoop.contains("A few pages") && !matchedFromLoop.contains("A lot of pages") &&
 //      matchedFromLoop.count(t => t ==="not too much and not too less") === 2)
 //
-//    assert(!matchedFromLoop.contains("A few pages") && !matchedFromLoop.contains("A lot of pages") &&
+//    assert(matchedFromLoop.contains("A few pages") && matchedFromLoop.contains("A lot of pages") &&
 //      matchedFromLoop.count(t => t ==="not too much and not too less") === 1)
 //
 //    assert(matchedFromLoop.contains("A few pages") && matchedFromLoop.contains("A lot of pages") &&

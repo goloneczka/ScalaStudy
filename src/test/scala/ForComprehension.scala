@@ -13,21 +13,22 @@ class ForComprehension extends FunSuite {
 
   test("basic view of for comprehension") {
 
-    val allBooksOnDiscount = for (book <- books)
-      yield book.price * 0.8
+    val allBooksOnDiscount = for (book <- books) yield book.price * 0.8
 
     assert(allBooksOnDiscount.size === 4)
-    assert(allBooksOnDiscount.max == 36) // 45 * 0.8 = 36
-    assert(allBooksOnDiscount.min == 12) // 15 * 0.8 = 12
+    assert(allBooksOnDiscount.max === 36) // 45 * 0.8 = 36
+    assert(allBooksOnDiscount.min === 12) // 15 * 0.8 = 12
   }
 
   test("additional filter") {
 
     val averageSizeBooks = for (book <- books if (book.pages >= 300 && book.pages <= 500))
-      yield book.name
+      yield book
 
     assert(averageSizeBooks.size === 2)
-    assert(averageSizeBooks.contains("Clean Code") && averageSizeBooks.contains("Harry Poter") )
+    assert(averageSizeBooks(0).name === "Clean Code")
+    assert(averageSizeBooks(1).name === "Harry Poter")
+
   }
 
   test("multi generators, usage without yield") {
